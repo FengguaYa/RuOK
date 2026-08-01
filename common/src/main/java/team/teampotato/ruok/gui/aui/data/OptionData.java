@@ -76,7 +76,7 @@ public class OptionData {
     @SuppressWarnings({"unchecked", "rawtypes"})
     private static AbstractWidget getDrawableOfEnum(Base<RuOKGameOptions, ?> base, TooltipHost host) {
         Base<RuOKGameOptions, Enum> enumBase = (Base<RuOKGameOptions, Enum>) base;
-        Class<Enum> enumClass = (Class<Enum>) enumBase.getEnumClass();
+        Class<Enum> enumClass = (Class) enumBase.getEnumClass();
         List<? extends Enum> values = Arrays.asList(enumClass.getEnumConstants());
         Component text = Component.translatable(base.key + ".info");
         TooltipData data = new TooltipData(Component.translatable(base.key + ".tooltip"), new ArrayList<>());

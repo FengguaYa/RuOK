@@ -4,6 +4,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.gui.components.AbstractWidget;
 import net.minecraft.client.input.MouseButtonEvent;
+import net.minecraft.client.gui.narration.NarrationElementOutput;
 import net.minecraft.network.chat.Component;
 import org.jetbrains.annotations.Nullable;
 import team.teampotato.ruok.gui.aui.TooltipHost;
@@ -78,6 +79,10 @@ public class BooleanWidget extends AbstractWidget {
         int knobY = this.getY() + (this.getHeight() - SIZE) / 2;
         ControlPart.renderButtonPart(context, (int) this.buttonX, knobY, SIZE);
         context.text(Minecraft.getInstance().font, this.getMessage(), this.getX() + 4, this.getY() + (this.getHeight() - 8) / 2, 0xFFFFFF, false);
+    }
+
+    @Override
+    protected void updateWidgetNarration(NarrationElementOutput narrationElementOutput) {
     }
 
     protected void renderButtonLinePart(GuiGraphicsExtractor context, int x, int y, int width, int height, boolean buttonOn) {

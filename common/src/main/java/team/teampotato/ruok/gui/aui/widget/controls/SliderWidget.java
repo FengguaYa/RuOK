@@ -9,6 +9,7 @@ import net.minecraft.client.gui.components.EditBox;
 import net.minecraft.client.input.CharacterEvent;
 import net.minecraft.client.input.KeyEvent;
 import net.minecraft.client.input.MouseButtonEvent;
+import net.minecraft.client.gui.narration.NarrationElementOutput;
 import net.minecraft.network.chat.Component;
 import net.minecraft.util.Mth;
 import org.jetbrains.annotations.NotNull;
@@ -201,15 +202,16 @@ public class SliderWidget extends AbstractWidget {
         this.renderSliderMode(context, mouseX, mouseY, hovered);
     }
 
+    @Override
+    protected void updateWidgetNarration(NarrationElementOutput narrationElementOutput) {
+    }
+
     private void renderSliderMode(GuiGraphicsExtractor context, int mouseX, int mouseY, boolean hovered) {
         if (this.externalGetter != null && !this.dragging) {
             double externalValue = this.externalGetter.getAsDouble();
             this.targetValue = this.value = this.toRatio(externalValue);
         }
         Theme theme = ThemeManager.get();
-        RenderSystem.enableBlend();
-        RenderSystem.defaultBlendFunc();
-        RenderSystem.enableDepthTest();
         ControlPart.renderWidgetLineAsBg(context, this.getX(), this.getY(), this.getWidth(), this.getHeight(), hovered);
         this.smoothValue += (this.targetValue - this.smoothValue) * SMOOTH_FACTOR;
         this.smoothValue = Mth.clamp(this.smoothValue, 0.0, 1.0);
@@ -234,7 +236,6 @@ public class SliderWidget extends AbstractWidget {
         if (textWidth > 0) {
             ControlPart.drawScrollingText(context, this.textRenderer, text, textX, textY, textWidth, theme.textColor);
         }
-        RenderSystem.disableBlend();
     }
 
     private void renderProgress(GuiGraphicsExtractor context, int x, int y, int x2, int y2) {

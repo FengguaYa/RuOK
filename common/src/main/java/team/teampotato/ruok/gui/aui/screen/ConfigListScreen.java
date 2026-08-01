@@ -6,6 +6,7 @@ import net.minecraft.client.gui.components.AbstractWidget;
 import net.minecraft.client.gui.components.EditBox;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.client.input.MouseButtonEvent;
+import net.minecraft.client.gui.narration.NarrationElementOutput;
 import net.minecraft.network.chat.Component;
 import team.teampotato.ruok.config.RuOK;
 import team.teampotato.ruok.gui.aui.TooltipHost;
@@ -228,6 +229,10 @@ public abstract class ConfigListScreen extends Screen implements TooltipHost {
             this.toggle.setX(this.getX() + this.getWidth() - 70);
             this.toggle.setY(this.getY() + (this.getHeight() - 16) / 2);
             this.toggle.extractRenderState(context, mouseX, mouseY, delta);
+        }
+
+        @Override
+        protected void updateWidgetNarration(NarrationElementOutput narrationElementOutput) {
         }
     }
 

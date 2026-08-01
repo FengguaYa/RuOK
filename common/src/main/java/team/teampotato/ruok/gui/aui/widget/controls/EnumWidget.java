@@ -5,6 +5,7 @@ import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.gui.components.AbstractWidget;
 import net.minecraft.client.input.MouseButtonEvent;
+import net.minecraft.client.gui.narration.NarrationElementOutput;
 import net.minecraft.network.chat.Component;
 import net.minecraft.util.Mth;
 import org.jetbrains.annotations.Nullable;
@@ -79,6 +80,10 @@ public class EnumWidget<E extends Enum<E>> extends AbstractWidget {
         context.text(this.textRenderer, this.getMessage(), this.getX() + 4, this.getY() + (this.getHeight() - 8) / 2, 0xFFFFFF, false);
         ControlPart.renderWidgetLineAsBg(context, this.getX(), this.getY(), this.getWidth(), this.getHeight(), hovered);
         this.renderEnumValue(context);
+    }
+
+    @Override
+    protected void updateWidgetNarration(NarrationElementOutput narrationElementOutput) {
     }
 
     private void renderEnumValue(GuiGraphicsExtractor context) {

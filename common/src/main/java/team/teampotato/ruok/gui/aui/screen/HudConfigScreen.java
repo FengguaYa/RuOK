@@ -5,6 +5,7 @@ import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.gui.components.AbstractWidget;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.client.input.MouseButtonEvent;
+import net.minecraft.client.gui.narration.NarrationElementOutput;
 import net.minecraft.network.chat.Component;
 import team.teampotato.ruok.config.RuOK;
 import team.teampotato.ruok.gui.aui.TooltipHost;
@@ -158,6 +159,10 @@ public class HudConfigScreen extends Screen implements TooltipHost {
             }
             team.teampotato.ruok.gui.aui.widget.controls.ControlPart.drawWidget(context,
                     this.getX(), this.getY(), this.getWidth(), this.getHeight(), this.getMessage(), hovered, 1.0f);
+        }
+
+        @Override
+        protected void updateWidgetNarration(NarrationElementOutput narrationElementOutput) {
         }
     }
 }

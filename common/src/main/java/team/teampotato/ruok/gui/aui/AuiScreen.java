@@ -8,6 +8,7 @@ import net.minecraft.client.input.KeyEvent;
 import net.minecraft.network.chat.Component;
 import team.teampotato.ruok.config.RuOK;
 import team.teampotato.ruok.gui.aui.data.OptionData;
+import team.teampotato.ruok.gui.aui.data.DebugData;
 import team.teampotato.ruok.gui.aui.draw.DrawUtil;
 import team.teampotato.ruok.gui.aui.screen.EntitiesConfigScreen;
 import team.teampotato.ruok.gui.aui.screen.HudConfigScreen;

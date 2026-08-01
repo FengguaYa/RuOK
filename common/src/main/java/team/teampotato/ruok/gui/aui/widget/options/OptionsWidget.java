@@ -4,6 +4,7 @@ import com.mojang.blaze3d.systems.RenderSystem;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.gui.components.AbstractWidget;
 import net.minecraft.client.input.MouseButtonEvent;
+import net.minecraft.client.gui.narration.NarrationElementOutput;
 import net.minecraft.network.chat.Component;
 import net.minecraft.util.Mth;
 import team.teampotato.ruok.gui.aui.TooltipHost;
@@ -129,10 +130,12 @@ public class OptionsWidget extends AbstractWidget {
         int scrollOffset = maxScroll > 0 ? (int) (this.scrollAmount * (double) scrollRange / (double) maxScroll) : 0;
         int thumbY1 = barY1 + scrollOffset;
         int thumbY2 = thumbY1 + thumbHeight;
-        RenderSystem.enableBlend();
         ControlPart.drawRectBorder(context, barX1 - 1, barY1 - 1, barX2, barY2 + 1, -1599427926);
         context.fill(barX1, barY1 - 1, barX2, barY2, 0x22999999);
         context.fill(barX1 + 1, thumbY1, barX2 - 1, thumbY2, -7798904);
-        RenderSystem.disableBlend();
+    }
+
+    @Override
+    protected void updateWidgetNarration(NarrationElementOutput narrationElementOutput) {
     }
 }
