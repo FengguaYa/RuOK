@@ -225,7 +225,7 @@ public abstract class ConfigListScreen extends Screen implements TooltipHost {
         @Override
         protected void extractWidgetRenderState(GuiGraphicsExtractor context, int mouseX, int mouseY, float delta) {
             int textY = this.getY() + (this.getHeight() - 8) / 2;
-            team.teampotato.ruok.gui.aui.draw.DrawUtil.drawText(context, ConfigListScreen.this.font, this.name, this.getX() + 4, textY, 0xFFFFFF);
+            team.teampotato.ruok.gui.aui.draw.DrawUtil.drawWidgetText(context, this, this.name, this.getX() + 4, textY, 0xFFFFFF);
             this.toggle.setX(this.getX() + this.getWidth() - 70);
             this.toggle.setY(this.getY() + (this.getHeight() - 16) / 2);
             this.toggle.extractRenderState(context, mouseX, mouseY, delta);

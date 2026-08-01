@@ -78,7 +78,7 @@ public class EnumWidget<E extends Enum<E>> extends AbstractWidget {
         boolean hovered = this.isMouseOver(mouseX, mouseY);
         this.tooltipState.tick(hovered, this.tooltipHost, mouseX, mouseY);
         ControlPart.renderWidgetLineAsBg(context, this.getX(), this.getY(), this.getWidth(), this.getHeight(), hovered);
-        team.teampotato.ruok.gui.aui.draw.DrawUtil.drawText(context, this.textRenderer, this.getMessage(), this.getX() + 4, this.getY() + (this.getHeight() - 8) / 2, 0xFFFFFF);
+        team.teampotato.ruok.gui.aui.draw.DrawUtil.drawWidgetText(context, this, this.getMessage(), this.getX() + 4, this.getY() + (this.getHeight() - 8) / 2, 0xFFFFFF);
         this.renderEnumValue(context);
     }
 
@@ -129,6 +129,6 @@ public class EnumWidget<E extends Enum<E>> extends AbstractWidget {
         int textWidth = this.textRenderer.width(text);
         int textX = x1 + (x2 - x1 - textWidth) / 2;
         int textY = y1 + (y2 - y1 - 8) / 2;
-        team.teampotato.ruok.gui.aui.draw.DrawUtil.drawText(context, this.textRenderer, text, textX, textY, textColor);
+        team.teampotato.ruok.gui.aui.draw.DrawUtil.drawWidgetText(context, this, text, textX, textY, textColor);
     }
 }

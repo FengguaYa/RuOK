@@ -22,7 +22,7 @@ public class AuiButtonWidget extends ButtonWidget {
     protected void extractWidgetRenderState(GuiGraphicsExtractor context, int mouseX, int mouseY, float delta) {
         boolean hovered = this.isMouseOver(mouseX, mouseY);
         this.getTooltipState().tick(hovered, this.getTooltipHost(), mouseX, mouseY);
-        ControlPart.drawWidget(context, this.getX(), this.getY(), this.getWidth(), this.getHeight(), this.getMessage(), hovered, this.scale);
+        ControlPart.drawWidget(context, this, this.getX(), this.getY(), this.getWidth(), this.getHeight(), this.getMessage(), hovered, this.scale);
     }
 
     public static AbstractWidget builder(int x, int y, int width, int height, Component text, List<Component> tests, ButtonWidget.PressAction pressAction, TooltipHost host, float scale) {

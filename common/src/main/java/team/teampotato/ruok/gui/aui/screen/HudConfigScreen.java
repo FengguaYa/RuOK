@@ -158,7 +158,7 @@ public class HudConfigScreen extends Screen implements TooltipHost {
                 this.screen.showTooltip(this.tooltip, mouseX, mouseY);
             }
             team.teampotato.ruok.gui.aui.widget.controls.ControlPart.drawWidget(context,
-                    this.getX(), this.getY(), this.getWidth(), this.getHeight(), this.getMessage(), hovered, 1.0f);
+                    this, this.getX(), this.getY(), this.getWidth(), this.getHeight(), this.getMessage(), hovered, 1.0f);
         }
 
         @Override

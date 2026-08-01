@@ -1,8 +1,10 @@
 package team.teampotato.ruok.gui.aui.draw;
 
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.ActiveTextCollector;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
+import net.minecraft.client.gui.components.AbstractWidget;
 import net.minecraft.network.chat.Component;
 import net.minecraft.util.FormattedCharSequence;
 import org.jetbrains.annotations.NotNull;
@@ -25,6 +27,12 @@ public class DrawUtil {
         if (!lines.isEmpty()) {
             context.text(font, lines.get(0), x, y, color, shadow);
         }
+    }
+
+    public static void drawWidgetText(@NotNull GuiGraphicsExtractor context, @NotNull AbstractWidget widget,
+                                      @NotNull Component text, int x, int y, int color) {
+        ActiveTextCollector collector = context.textRendererForWidget(widget, GuiGraphicsExtractor.HoveredTextEffects.NONE);
+        collector.accept(x, y, text.copy().withStyle(style -> style.withColor(color)));
     }
 
     public static int getListAllEntryHeight(List<? extends net.minecraft.client.gui.components.AbstractWidget> list, boolean add) {

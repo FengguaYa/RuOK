@@ -78,7 +78,7 @@ public class BooleanWidget extends AbstractWidget {
         this.renderButtonLinePart(context, bgX, bgY + 1, bgWidth - 5 - 3, bgHeight - 1, buttonOn);
         int knobY = this.getY() + (this.getHeight() - SIZE) / 2;
         ControlPart.renderButtonPart(context, (int) this.buttonX, knobY, SIZE);
-        team.teampotato.ruok.gui.aui.draw.DrawUtil.drawText(context, Minecraft.getInstance().font, this.getMessage(), this.getX() + 4, this.getY() + (this.getHeight() - 8) / 2, 0xFFFFFF);
+        team.teampotato.ruok.gui.aui.draw.DrawUtil.drawWidgetText(context, this, this.getMessage(), this.getX() + 4, this.getY() + (this.getHeight() - 8) / 2, 0xFFFFFF);
     }
 
     @Override

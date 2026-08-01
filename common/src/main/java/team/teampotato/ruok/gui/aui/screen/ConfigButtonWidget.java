@@ -24,7 +24,7 @@ public class ConfigButtonWidget extends BooleanWidget {
         }
         boolean hovered = this.isMouseOver(mouseX, mouseY);
         this.tooltipState.tick(hovered, this.getTooltipHost(), mouseX, mouseY);
-        ControlPart.drawWidget(context, this.getX(), this.getY(), this.getWidth(), this.getHeight(), this.getMessage(), hovered, 1.0f);
+        ControlPart.drawWidget(context, this, this.getX(), this.getY(), this.getWidth(), this.getHeight(), this.getMessage(), hovered, 1.0f);
         int endX = this.getX() + this.getWidth();
         int fillXStart = endX - 22;
         int fillXEnd = endX - 4;

@@ -234,7 +234,7 @@ public class SliderWidget extends AbstractWidget {
         int progressStartX = trackX - 3;
         int textWidth = progressStartX - textX - 4;
         if (textWidth > 0) {
-            ControlPart.drawScrollingText(context, this.textRenderer, text, textX, textY, textWidth, theme.textColor);
+            ControlPart.drawScrollingText(context, this, text, textX, textY, textWidth, theme.textColor);
         }
     }
 
@@ -259,7 +259,7 @@ public class SliderWidget extends AbstractWidget {
         Theme theme = ThemeManager.get();
         ControlPart.renderWidgetLineAsBg(context, this.getX(), this.getY(), this.getWidth(), this.getHeight(), true);
         int textY = this.getY() + (this.getHeight() - 8) / 2;
-        team.teampotato.ruok.gui.aui.draw.DrawUtil.drawText(context, this.textRenderer, this.getMessage(), this.getX() + 2, textY, theme.textColor);
+        team.teampotato.ruok.gui.aui.draw.DrawUtil.drawWidgetText(context, this, this.getMessage(), this.getX() + 2, textY, theme.textColor);
         if (this.inputField != null) {
             this.inputField.extractRenderState(context, 0, 0, 0.0F);
         }

@@ -57,7 +57,7 @@ public class ButtonWidget extends AbstractWidget {
         boolean hovered = this.isMouseOver(mouseX, mouseY);
         this.tooltipState.tick(hovered, this.tooltipHost, mouseX, mouseY);
         ControlPart.renderWidgetLineAsBg(context, this.getX(), this.getY(), this.getWidth(), this.getHeight(), hovered);
-        team.teampotato.ruok.gui.aui.draw.DrawUtil.drawText(context, Minecraft.getInstance().font, this.getMessage(), this.getX() + 4, this.getY() + (this.getHeight() - 8) / 2, 0xFFFFFF);
+        team.teampotato.ruok.gui.aui.draw.DrawUtil.drawWidgetText(context, this, this.getMessage(), this.getX() + 4, this.getY() + (this.getHeight() - 8) / 2, 0xFFFFFF);
     }
 
     @Override

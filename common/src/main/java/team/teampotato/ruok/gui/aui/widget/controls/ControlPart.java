@@ -1,10 +1,12 @@
 package team.teampotato.ruok.gui.aui.widget.controls;
 
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.components.AbstractWidget;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.network.chat.Component;
 import net.minecraft.util.Mth;
+import team.teampotato.ruok.gui.aui.draw.DrawUtil;
 
 public class ControlPart {
     private static final int BORDER_DARK = -14803426;
@@ -71,7 +73,7 @@ public class ControlPart {
         return withAlpha(lighten(color, !hovered ? 0.05f : 0.0f), 80);
     }
 
-    public static void drawWidget(GuiGraphicsExtractor context, int x, int y, int width, int height, Component text, boolean hovered, float scale) {
+    public static void drawWidget(GuiGraphicsExtractor context, AbstractWidget widget, int x, int y, int width, int height, Component text, boolean hovered, float scale) {
         int borderOuter = getWidgetColor(-14803425, hovered);
         int borderLight = getWidgetColor(-9605778, hovered);
         int borderDark = getWidgetColor(-13421772, hovered);
@@ -79,20 +81,19 @@ public class ControlPart {
         drawRectBorder(context, x, y, x + width, y + height, borderOuter);
         drawRectBorderTColor(context, x + 1, y + 1, x + width - 1, y + height - 1, borderLight, borderDark);
         context.fill(x + 2, y + 2, x + width - 1, y + height - 1, background);
-        drawScaledText(context, text, x + 4, y, height, scale);
+        drawScaledText(context, widget, text, x + 4, y, height, scale);
     }
 
-    private static void drawScaledText(GuiGraphicsExtractor context, Component text, int x, int y, int height, float scale) {
-        Font tr = Minecraft.getInstance().font;
+    private static void drawScaledText(GuiGraphicsExtractor context, AbstractWidget widget, Component text, int x, int y, int height, float scale) {
         int textY = y + (height - 8) / 2;
-        team.teampotato.ruok.gui.aui.draw.DrawUtil.drawText(context, tr, text, x, textY, 0xFFFFFF);
+        DrawUtil.drawWidgetText(context, widget, text, x, textY, 0xFFFFFF);
     }
 
-    public static void drawWidget(GuiGraphicsExtractor context, int x, int y, int width, int height, Component text, boolean hovered) {
-        drawWidget(context, x, y, width, height, text, hovered, 1.1f);
+    public static void drawWidget(GuiGraphicsExtractor context, AbstractWidget widget, int x, int y, int width, int height, Component text, boolean hovered) {
+        drawWidget(context, widget, x, y, width, height, text, hovered, 1.1f);
     }
 
-    public static void drawScrollingText(GuiGraphicsExtractor context, Font tr, Component text, int x, int y, int width, int color) {
-        team.teampotato.ruok.gui.aui.draw.DrawUtil.drawText(context, tr, text, x, y, color);
+    public static void drawScrollingText(GuiGraphicsExtractor context, AbstractWidget widget, Component text, int x, int y, int width, int color) {
+        DrawUtil.drawWidgetText(context, widget, text, x, y, color);
     }
 }
