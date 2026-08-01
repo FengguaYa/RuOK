@@ -259,7 +259,7 @@ public class SliderWidget extends AbstractWidget {
         Theme theme = ThemeManager.get();
         ControlPart.renderWidgetLineAsBg(context, this.getX(), this.getY(), this.getWidth(), this.getHeight(), true);
         int textY = this.getY() + (this.getHeight() - 8) / 2;
-        context.text(this.textRenderer, this.getMessage().getString(), this.getX() + 2, textY, theme.textColor, false);
+        context.text(this.textRenderer, this.getMessage().getString(), this.getX() + 2, textY, theme.textColor);
         if (this.inputField != null) {
             this.inputField.extractRenderState(context, 0, 0, 0.0F);
         }

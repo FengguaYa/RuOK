@@ -84,13 +84,8 @@ public class ControlPart {
 
     private static void drawScaledText(GuiGraphicsExtractor context, Component text, int x, int y, int height, float scale) {
         Font tr = Minecraft.getInstance().font;
-        context.pose().pushMatrix();
-        float textHeight = 8.0f * scale;
-        float textY = (float) y + ((float) height - textHeight) / 2.0f;
-        context.pose().translate(x, textY);
-        context.pose().scale(scale, scale);
-        context.text(tr, text, 0, 0, -1, false);
-        context.pose().popMatrix();
+        int textY = y + (height - 8) / 2;
+        context.text(tr, text, x, textY, 0xFFFFFF, false);
     }
 
     public static void drawWidget(GuiGraphicsExtractor context, int x, int y, int width, int height, Component text, boolean hovered) {
@@ -98,21 +93,6 @@ public class ControlPart {
     }
 
     public static void drawScrollingText(GuiGraphicsExtractor context, Font tr, Component text, int x, int y, int width, int color) {
-        int fullWidth = tr.width(text);
-        context.pose().pushMatrix();
-        context.enableScissor(x, y - 1, x + width, y + 9 + 1);
-        if (fullWidth <= width) {
-            context.text(tr, text, x, y, color, false);
-        } else {
-            long time = System.currentTimeMillis();
-            float period = 4000.0f;
-            float t = (float) (time % (long) period) / period;
-            float maxScroll = fullWidth - width + 6;
-            float offset = Mth.lerp(t, 0.0f, maxScroll);
-            context.pose().translate(-offset, 0.0f);
-            context.text(tr, text, x, y, color, false);
-        }
-        context.disableScissor();
-        context.pose().popMatrix();
+        context.text(tr, text, x, y, color, false);
     }
 }

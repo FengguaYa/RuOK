@@ -7,6 +7,7 @@ import net.minecraft.client.input.MouseButtonEvent;
 import net.minecraft.client.gui.narration.NarrationElementOutput;
 import net.minecraft.network.chat.Component;
 import net.minecraft.util.Mth;
+import team.teampotato.ruok.RuOKMod;
 import team.teampotato.ruok.gui.aui.TooltipHost;
 import team.teampotato.ruok.gui.aui.widget.controls.ControlPart;
 
@@ -103,7 +104,11 @@ public class OptionsWidget extends AbstractWidget {
         context.enableScissor(this.x1, this.y1, this.x2, this.y2);
         for (AbstractWidget widget : this.widgets) {
             if (widget.visible && widget.getY() + widget.getHeight() >= this.y1 && widget.getY() <= this.y2) {
-                widget.extractRenderState(context, mouseX, mouseY, delta);
+                try {
+                    widget.extractRenderState(context, mouseX, mouseY, delta);
+                } catch (Throwable t) {
+                    RuOKMod.LOGGER.error("RuOK Aui widget render failed: {}", widget.getClass().getName(), t);
+                }
             }
         }
         context.disableScissor();

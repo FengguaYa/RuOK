@@ -12,10 +12,7 @@ public class DrawUtil {
     private static final Minecraft mc = Minecraft.getInstance();
 
     public static void drawCenteredText(@NotNull GuiGraphicsExtractor context, Component text, int x, int y, float scale) {
-        context.pose().pushMatrix();
-        context.pose().scale(scale, scale);
         context.text(DrawUtil.mc.font, text, x, y, 0xFFFFFF, false);
-        context.pose().popMatrix();
     }
 
     public static int getListAllEntryHeight(List<? extends net.minecraft.client.gui.components.AbstractWidget> list, boolean add) {

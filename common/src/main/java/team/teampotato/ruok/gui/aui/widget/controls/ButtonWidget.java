@@ -57,7 +57,7 @@ public class ButtonWidget extends AbstractWidget {
         boolean hovered = this.isMouseOver(mouseX, mouseY);
         this.tooltipState.tick(hovered, this.tooltipHost, mouseX, mouseY);
         ControlPart.renderWidgetLineAsBg(context, this.getX(), this.getY(), this.getWidth(), this.getHeight(), hovered);
-        context.text(Minecraft.getInstance().font, this.getMessage(), this.getX() + 4, this.getY() + (this.getHeight() - 8) / 2, 0xFFFFFF, false);
+        context.text(Minecraft.getInstance().font, this.getMessage(), this.getX() + 4, this.getY() + (this.getHeight() - 8) / 2, 0xFFFFFF);
     }
 
     @Override

@@ -39,6 +39,3 @@ mandatory = true
 versionRange = "[26.1,)"
 ordering = "AFTER"
 side = "CLIENT"
-
-[modproperties.ruokmod]
-"sodium:config_api_user" = "team.teampotato.ruok.sodium.RuOKConfigEntryPoint"
