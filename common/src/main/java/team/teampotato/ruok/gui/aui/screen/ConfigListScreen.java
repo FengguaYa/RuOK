@@ -162,7 +162,7 @@ public abstract class ConfigListScreen extends Screen implements TooltipHost {
         }
         int labelX = this.searchBox.getX() - 6 - this.font.width(Component.translatable(this.getSearchLabelKey()));
         int labelY = this.searchBox.getY() + (this.searchBox.getHeight() - 8) / 2;
-        context.text(this.font, Component.translatable(this.getSearchLabelKey()), labelX, labelY, 0xE0E0E0);
+        team.teampotato.ruok.gui.aui.draw.DrawUtil.drawText(context, this.font, Component.translatable(this.getSearchLabelKey()), labelX, labelY, 0xE0E0E0);
         super.extractRenderState(context, mouseX, mouseY, delta);
         this.renderTooltip(context, mouseX, mouseY);
     }
@@ -225,7 +225,7 @@ public abstract class ConfigListScreen extends Screen implements TooltipHost {
         @Override
         protected void extractWidgetRenderState(GuiGraphicsExtractor context, int mouseX, int mouseY, float delta) {
             int textY = this.getY() + (this.getHeight() - 8) / 2;
-            context.text(ConfigListScreen.this.font, this.name, this.getX() + 4, textY, 0xFFFFFF);
+            team.teampotato.ruok.gui.aui.draw.DrawUtil.drawText(context, ConfigListScreen.this.font, this.name, this.getX() + 4, textY, 0xFFFFFF);
             this.toggle.setX(this.getX() + this.getWidth() - 70);
             this.toggle.setY(this.getY() + (this.getHeight() - 16) / 2);
             this.toggle.extractRenderState(context, mouseX, mouseY, delta);

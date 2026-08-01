@@ -66,7 +66,7 @@ public class AuiScreen extends Screen implements TooltipHost {
         int textHeight = 9;
         int textX = Math.round(this.width * 0.25f) + 3;
         int textY = buttonY + (buttonHeight - textHeight) / 2;
-        context.text(this.font, versionText, textX, textY, 0xFFFFFF);
+        DrawUtil.drawText(context, this.font, versionText, textX, textY, 0xFFFFFF);
     }
 
     public void renderTitle(GuiGraphicsExtractor context) {

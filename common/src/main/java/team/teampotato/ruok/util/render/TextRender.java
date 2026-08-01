@@ -19,6 +19,7 @@ import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import team.teampotato.ruok.config.RuOK;
 import team.teampotato.ruok.config.RuOKConfig;
+import team.teampotato.ruok.gui.aui.draw.DrawUtil;
 import team.teampotato.ruok.util.FPSUtil;
 import team.teampotato.ruok.util.OSysInfo;
 import team.teampotato.ruok.util.render.text.LocalServerInfo;
@@ -112,7 +113,7 @@ public class TextRender {
                     addTextShadow(context, x, y, textWidth, textHeight);
 
                     // 绘制文本
-                    context.text(tr, fpsText, x, y, color, true);
+                    DrawUtil.drawText(context, tr, fpsText, x, y, color, true);
                     y += fh;
                 }
 
@@ -155,7 +156,7 @@ public class TextRender {
                     addTextShadow(context, x, y, textWidth, textHeight);
 
                     // 绘制文本
-                    context.text(tr, info, x, y, color, true);
+                    DrawUtil.drawText(context, tr, info, x, y, color, true);
                     y += fh;
                 }
 
@@ -177,7 +178,7 @@ public class TextRender {
                     addTextShadow(context, x, y, textWidth, textHeight);
 
                     // 绘制文本
-                    context.text(tr, posText, x, y, color, true);
+                    DrawUtil.drawText(context, tr, posText, x, y, color, true);
                     y += fh;
                 }
 
@@ -195,7 +196,7 @@ public class TextRender {
                     addTextShadow(context, x, y, textWidth, textHeight);
 
                     // 绘制文本
-                    context.text(tr, serverText, x, y, color, true);
+                    DrawUtil.drawText(context, tr, serverText, x, y, color, true);
                     y += fh;
                 }
 
@@ -209,7 +210,7 @@ public class TextRender {
                     addTextShadow(context, x, y, textWidth, textHeight);
 
                     // 绘制文本
-                    context.text(tr, CAMERA_TO_BLOCK, x, y, color, true);
+                    DrawUtil.drawText(context, tr, CAMERA_TO_BLOCK, x, y, color, true);
                     y += fh;
                 }
 
@@ -224,7 +225,7 @@ public class TextRender {
                     addTextShadow(context, x, y, textWidth, textHeight);
 
                     // 绘制文本
-                    context.text(tr, serverIOText, x, y, color, true);
+                    DrawUtil.drawText(context, tr, serverIOText, x, y, color, true);
                     // y += fh; // 不增加y以防止文本间隔过大
                 }
             }

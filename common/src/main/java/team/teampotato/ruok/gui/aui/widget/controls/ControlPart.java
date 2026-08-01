@@ -85,7 +85,7 @@ public class ControlPart {
     private static void drawScaledText(GuiGraphicsExtractor context, Component text, int x, int y, int height, float scale) {
         Font tr = Minecraft.getInstance().font;
         int textY = y + (height - 8) / 2;
-        context.text(tr, text, x, textY, 0xFFFFFF, false);
+        team.teampotato.ruok.gui.aui.draw.DrawUtil.drawText(context, tr, text, x, textY, 0xFFFFFF);
     }
 
     public static void drawWidget(GuiGraphicsExtractor context, int x, int y, int width, int height, Component text, boolean hovered) {
@@ -93,6 +93,6 @@ public class ControlPart {
     }
 
     public static void drawScrollingText(GuiGraphicsExtractor context, Font tr, Component text, int x, int y, int width, int color) {
-        context.text(tr, text, x, y, color, false);
+        team.teampotato.ruok.gui.aui.draw.DrawUtil.drawText(context, tr, text, x, y, color);
     }
 }
