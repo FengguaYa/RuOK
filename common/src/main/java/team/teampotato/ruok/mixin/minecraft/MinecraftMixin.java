@@ -35,7 +35,7 @@ public class MinecraftMixin {
 
     }
     @WrapOperation(
-            method = "runTick",
+            method = "renderFrame",
             at = @At(
                     value = "INVOKE",
                     target = "Lnet/minecraft/util/profiling/metrics/profiling/MetricsRecorder;isRecording()Z",
