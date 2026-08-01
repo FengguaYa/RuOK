@@ -10,7 +10,7 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
-import team.teampotato.ruok.gui.RuOKConfigScreen;
+import team.teampotato.ruok.gui.aui.AuiScreen;
 
 @Mixin(OptionsScreen.class)
 public abstract class OptionsScreenMixin extends Screen {
@@ -23,7 +23,7 @@ public abstract class OptionsScreenMixin extends Screen {
     private void onInit(CallbackInfo ci, @Local GridLayout.RowHelper adder) {
         Button button = Button.builder(
                 Component.translatable("ruok.options.gui.ruok"),
-                (b) -> this.minecraft.setScreen(RuOKConfigScreen.create(this))
+                (b) -> this.minecraft.setScreen(new AuiScreen(this))
         ).build();
         adder.addChild(button);
     }

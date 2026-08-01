@@ -1,6 +1,7 @@
 package team.teampotato.ruok.sodium;
 
 import net.caffeinemc.mods.sodium.api.config.ConfigEntryPoint;
+import net.caffeinemc.mods.sodium.api.config.StorageEventHandler;
 import net.caffeinemc.mods.sodium.api.config.option.OptionImpact;
 import net.caffeinemc.mods.sodium.api.config.structure.BooleanOptionBuilder;
 import net.caffeinemc.mods.sodium.api.config.structure.ConfigBuilder;
@@ -234,6 +235,7 @@ public class RuOKConfigEntryPoint implements ConfigEntryPoint {
         return builder.createBooleanOption(id(id))
                 .setName(Component.translatable(nameKey))
                 .setTooltip(Component.translatable(tooltipKey))
+                .setStorageHandler(RuOK::save)
                 .setBinding(setter, getter)
                 .setImpact(OptionImpact.LOW);
     }
@@ -245,6 +247,7 @@ public class RuOKConfigEntryPoint implements ConfigEntryPoint {
                 .setName(Component.translatable(nameKey))
                 .setTooltip(Component.translatable(tooltipKey))
                 .setRange(min, max, step)
+                .setStorageHandler(RuOK::save)
                 .setBinding(setter, getter)
                 .setImpact(OptionImpact.LOW);
     }
@@ -256,6 +259,7 @@ public class RuOKConfigEntryPoint implements ConfigEntryPoint {
         return builder.<E>createEnumOption(id(id), clazz)
                 .setName(Component.translatable(nameKey))
                 .setTooltip(Component.translatable(tooltipKey))
+                .setStorageHandler(RuOK::save)
                 .setAllowedValues(values)
                 .setElementNameProvider(nameProvider)
                 .setBinding(setter, getter)
