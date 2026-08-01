@@ -32,16 +32,23 @@ jobs:
         run: chmod +x ./gradlew
 
       - name: Build
-        run: ./gradlew build --no-daemon
+        run: ./gradlew build :fabric:shadowJar :neoforge:shadowJar --no-daemon
 
-      - name: Upload Fabric artifact
+      - name: List build outputs
+        run: find fabric/build/libs neoforge/build/libs -type f | sort
+
+      - name: Upload Fabric artifacts
         uses: actions/upload-artifact@v4
         with:
           name: RuOK-fabric
-          path: fabric/build/libs/RuOK-*-fabric.jar
+          path: fabric/build/libs/*.jar
+          if-no-files-found: error
+          retention-days: 14
 
-      - name: Upload NeoForge artifact
+      - name: Upload NeoForge artifacts
         uses: actions/upload-artifact@v4
         with:
           name: RuOK-neoforge
-          path: neoforge/build/libs/RuOK-*-neoforge.jar
+          path: neoforge/build/libs/*.jar
+          if-no-files-found: error
+          retention-days: 14
