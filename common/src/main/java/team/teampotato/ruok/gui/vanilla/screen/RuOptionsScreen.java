@@ -2,6 +2,7 @@ package team.teampotato.ruok.gui.vanilla.screen;
 
 import net.minecraft.client.OptionInstance;
 import net.minecraft.client.Options;
+import net.minecraft.client.input.MouseButtonEvent;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.client.gui.screens.options.OptionsSubScreen;
 import net.minecraft.network.chat.Component;
@@ -27,12 +28,12 @@ public class RuOptionsScreen extends OptionsSubScreen {
     }
 
     @Override
-    public boolean mouseClicked(double mouseX, double mouseY, int button) {
+    public boolean mouseClicked(MouseButtonEvent event, boolean bl) {
         int i = this.options.guiScale().get();
-        if (super.mouseClicked(mouseX, mouseY, button)) {
+        if (super.mouseClicked(event, bl)) {
             if (this.options.guiScale().get() != i) {
                 if (this.minecraft != null) {
-                    this.minecraft.resizeDisplay();
+                    this.minecraft.resizeGui();
                 }
             }
             return true;

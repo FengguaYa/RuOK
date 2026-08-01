@@ -9,7 +9,7 @@ import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleType;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.util.Mth;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
@@ -48,7 +48,7 @@ public class ParticleRender {
     }
 
     public static Optional<ParticleType<?>> particleTypeGet(String id) {
-        return BuiltInRegistries.PARTICLE_TYPE.getOptional(ResourceLocation.tryParse(id));
+        return BuiltInRegistries.PARTICLE_TYPE.getOptional(Identifier.tryParse(id));
     }
 
     // 重新加载生物列表
@@ -145,7 +145,7 @@ public class ParticleRender {
         if(ParticleRender.isParticleBlacklisted(particleEffect)) {
             ci.cancel();
         }
-        if(camera.getPosition().distanceToSqr(x, y, z) > RuOK.get().MaxParticleDistance) {
+        if(camera.position().distanceToSqr(x, y, z) > RuOK.get().MaxParticleDistance) {
             ci.cancel();
         }
     }
@@ -197,7 +197,7 @@ public class ParticleRender {
 
 
         // 超过最大距离不生成粒子
-        if ((camera.getPosition().distanceToSqr(x, y, z) > RuOK.get().MaxParticleDistance)) {
+        if ((camera.position().distanceToSqr(x, y, z) > RuOK.get().MaxParticleDistance)) {
             cir.setReturnValue(null);
         }
 

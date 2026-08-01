@@ -1,9 +1,10 @@
 package team.teampotato.ruok.gui.vanilla.screen;
 
-import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.components.Tooltip;
 import net.minecraft.client.gui.screens.Screen;
+import net.minecraft.client.input.MouseButtonEvent;
 import net.minecraft.network.chat.CommonComponents;
 import net.minecraft.network.chat.Component;
 import team.teampotato.ruok.config.RuOK;
@@ -51,12 +52,12 @@ public class ConfigHUDScreen extends Screen {
     }
 
     @Override
-    public void render(GuiGraphics context, int mouseX, int mouseY, float delta) {
-        this.renderBackground(context);
-        context.drawCenteredString(this.font, this.title, this.width / 2, 15, 16777215);
-        super.render(context, mouseX, mouseY, delta);
+    public void extractRenderState(GuiGraphicsExtractor context, int mouseX, int mouseY, float delta) {
+        this.extractBackground(context, mouseX, mouseY, delta);
+        context.centeredText(this.font, this.title, this.width / 2, 15, 16777215);
+        super.extractRenderState(context, mouseX, mouseY, delta);
     }
-    public void renderBackground(GuiGraphics context) {
+    public void extractBackground(GuiGraphicsExtractor context, int mouseX, int mouseY, float delta) {
         if (minecraft.level!= null) {
             int startColor = -1072689136;
             int endColor = -804253680;
@@ -66,7 +67,7 @@ public class ConfigHUDScreen extends Screen {
             endColor = (alphaValue << 24) | endRGB;
             context.fillGradient(0, 0, this.width, this.height, startColor, endColor);
         } else {
-            this.renderMenuBackground(context);
+            this.extractMenuBackground(context);
         }
     }
 
@@ -82,32 +83,32 @@ public class ConfigHUDScreen extends Screen {
     }
 
     @Override
-    public boolean mouseClicked(double mouseX, double mouseY, int button) {
-        if (buttonWidget.isMouseOver(mouseX, mouseY)) {
+    public boolean mouseClicked(MouseButtonEvent event, boolean bl) {
+        if (buttonWidget.isMouseOver(event.x(), event.y())) {
             // 如果点击了按钮，开始拖动
             isDragging = true;
-            dragOffsetX = (int) (mouseX - buttonWidget.getX());
-            dragOffsetY = (int) (mouseY - buttonWidget.getY());
+            dragOffsetX = (int) (event.x() - buttonWidget.getX());
+            dragOffsetY = (int) (event.y() - buttonWidget.getY());
         }
-        return super.mouseClicked(mouseX, mouseY, button);
+        return super.mouseClicked(event, bl);
     }
 
     @Override
-    public boolean mouseReleased(double mouseX, double mouseY, int button) {
+    public boolean mouseReleased(MouseButtonEvent event) {
         if (isDragging) {
             // 释放鼠标时停止拖动
             isDragging = false;
             saveConfig(buttonWidget.getX(), buttonWidget.getY());
         }
-        return super.mouseReleased(mouseX, mouseY, button);
+        return super.mouseReleased(event);
     }
 
     @Override
-    public boolean mouseDragged(double mouseX, double mouseY, int button, double deltaX, double deltaY) {
+    public boolean mouseDragged(MouseButtonEvent event, double deltaX, double deltaY) {
         if (isDragging) {
             // 在拖动状态下更新按钮位置
-            int newX = (int) (mouseX - dragOffsetX);
-            int newY = (int) (mouseY - dragOffsetY);
+            int newX = (int) (event.x() - dragOffsetX);
+            int newY = (int) (event.y() - dragOffsetY);
 
             // 限制按钮位置在屏幕内
             newX = Math.max(0, Math.min(newX, this.width - buttonWidget.getWidth()));
@@ -116,7 +117,7 @@ public class ConfigHUDScreen extends Screen {
             buttonWidget.setX(newX);
             buttonWidget.setY(newY);
         }
-        return super.mouseDragged(mouseX, mouseY, button, deltaX, deltaY);
+        return super.mouseDragged(event, deltaX, deltaY);
     }
 
     private void saveConfig(int x, int y) {

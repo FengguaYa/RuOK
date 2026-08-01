@@ -1,12 +1,11 @@
 package team.teampotato.ruok.gui.vanilla.mode;
 
 import net.minecraft.util.ByIdMap;
-import net.minecraft.util.OptionEnum;
 
 import java.util.function.IntFunction;
 
 
-public enum WeatherType implements OptionEnum {
+public enum WeatherType {
     CLOSE(0, "ruok.quality.close"),
     LOW(1, "ruok.quality.low"),
     NORMAL(2,"ruok.quality.normal");//Button 2 Name

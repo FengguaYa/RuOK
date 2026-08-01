@@ -1,6 +1,6 @@
 package team.teampotato.ruok.gui.vanilla.screen;
 
-import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.layouts.FrameLayout;
 import net.minecraft.client.gui.layouts.GridLayout;
@@ -36,12 +36,12 @@ public class DeBugScreen extends OptionsSubScreen {
         this.layout.addToContents(gridWidget);
     }
 
-    public void render(GuiGraphics context, int mouseX, int mouseY, float delta) {
-        this.renderBackground(context);
-        context.drawCenteredString(this.font, this.title, this.width / 2, 15, 16777215);
-        super.render(context, mouseX, mouseY, delta);
+    public void extractRenderState(GuiGraphicsExtractor context, int mouseX, int mouseY, float delta) {
+        this.extractBackground(context, mouseX, mouseY, delta);
+        context.centeredText(this.font, this.title, this.width / 2, 15, 16777215);
+        super.extractRenderState(context, mouseX, mouseY, delta);
     }
-    public void renderBackground(GuiGraphics context) {
+    public void extractBackground(GuiGraphicsExtractor context, int mouseX, int mouseY, float delta) {
         if (minecraft.level!= null) {
             int startColor = -1072689136;
             int endColor = -804253680;
@@ -51,7 +51,7 @@ public class DeBugScreen extends OptionsSubScreen {
             endColor = (alphaValue << 24) | endRGB;
             context.fillGradient(0, 0, this.width, this.height, startColor, endColor);
         } else {
-            this.renderMenuBackground(context);
+            this.extractMenuBackground(context);
         }
     }
 

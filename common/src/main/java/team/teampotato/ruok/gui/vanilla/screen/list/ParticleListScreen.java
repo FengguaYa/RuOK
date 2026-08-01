@@ -4,7 +4,7 @@ import com.google.common.collect.ImmutableList;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.OptionInstance;
 import net.minecraft.client.Options;
-import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.gui.components.AbstractWidget;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.components.ContainerObjectSelectionList;
@@ -18,7 +18,7 @@ import net.minecraft.core.particles.ParticleType;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.CommonComponents;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import org.jetbrains.annotations.NotNull;
 import team.teampotato.ruok.config.RuOK;
 import team.teampotato.ruok.util.render.ParticleRender;
@@ -34,7 +34,6 @@ public class ParticleListScreen extends OptionsSubScreen {
 
     public ParticleListScreen(Component title, Screen parent, Options options, List<String> list) {
         super(parent,options, title);
-        this.font = Minecraft.getInstance().font;
         this.lists = list;
     }
 
@@ -157,13 +156,13 @@ public class ParticleListScreen extends OptionsSubScreen {
                         : Component.translatable("ruok.options.gui.disable"));
             }
             @Override
-            public void render(GuiGraphics context, int index, int y, int x, int entryWidth, int entryHeight, int mouseX, int mouseY, boolean hovered, float tickDelta) {
-                int textYPosition = y + entryHeight / 2 - 9 / 2;
-                ResourceLocation text = Objects.requireNonNull(BuiltInRegistries.PARTICLE_TYPE.getKey(type));
-                context.drawString(client.font, Component.translatable(text.toLanguageKey()),x-20, textYPosition, 16777215, false);
-                this.widget.setX(x + 160);
-                this.widget.setY(y);
-                this.widget.render(context, mouseX, mouseY, tickDelta);
+            public void extractContent(GuiGraphicsExtractor context, int mouseX, int mouseY, boolean hovered, float tickDelta) {
+                int textYPosition = this.getContentY() + this.getContentHeight() / 2 - 4;
+                Identifier text = Objects.requireNonNull(BuiltInRegistries.PARTICLE_TYPE.getKey(type));
+                context.text(client.font, Component.translatable(text.toLanguageKey()), this.getContentX() - 20, textYPosition, 16777215, false);
+                this.widget.setX(this.getContentX() + 160);
+                this.widget.setY(this.getContentY());
+                this.widget.extractRenderState(context, mouseX, mouseY, tickDelta);
             }
 
             @Override

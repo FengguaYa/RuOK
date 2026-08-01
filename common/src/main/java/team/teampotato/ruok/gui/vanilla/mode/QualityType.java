@@ -1,11 +1,10 @@
 package team.teampotato.ruok.gui.vanilla.mode;
 
 import net.minecraft.util.ByIdMap;
-import net.minecraft.util.OptionEnum;
 
 import java.util.function.IntFunction;
 
-public enum QualityType implements OptionEnum {
+public enum QualityType {
    // ULTRA(),HIGH,NORMAL,LOW,CRITICAL
     CRITICAL(0, "ruok.quality.close"),
     LOW(1, "ruok.quality.low"),

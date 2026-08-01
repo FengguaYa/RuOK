@@ -5,7 +5,7 @@ import com.google.common.collect.ImmutableMap;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.OptionInstance;
 import net.minecraft.client.Options;
-import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.gui.components.AbstractWidget;
 import net.minecraft.client.gui.components.ContainerObjectSelectionList;
 import net.minecraft.client.gui.components.events.GuiEventListener;
@@ -44,8 +44,8 @@ public class OptionListWidget extends ContainerObjectSelectionList<OptionListWid
         return 400;
     }
 
-    protected int getScrollbarPosition() {
-        return super.getScrollbarPosition() + 32;
+    protected int scrollBarX() {
+        return super.scrollBarX() + 32;
     }
 
     @Nullable
@@ -97,10 +97,10 @@ public class OptionListWidget extends ContainerObjectSelectionList<OptionListWid
         }
 
         @Override
-        public void render(GuiGraphics context, int index, int y, int x, int entryWidth, int entryHeight, int mouseX, int mouseY, boolean hovered, float tickDelta) {
+        public void extractContent(GuiGraphicsExtractor context, int mouseX, int mouseY, boolean hovered, float tickDelta) {
             this.widgets.forEach((widget) -> {
-                widget.setY(y);
-                widget.render(context, mouseX, mouseY, tickDelta);
+                widget.setY(this.getContentY());
+                widget.extractRenderState(context, mouseX, mouseY, tickDelta);
             });
         }
 

@@ -14,7 +14,7 @@ Awei
 Yuqi154
 '''
 description = '''
-Embeddium & Sodium Mod!
+RuOK - Minecraft client performance & quality-of-life mod (Sodium compatible).
 '''
 [[mixins]]
 config = "RuOK.common.mixins.json"
@@ -22,20 +22,20 @@ config = "RuOK.common.mixins.json"
 [[dependencies.ruokmod]]
 modId = "neoforge"
 mandatory = true
-versionRange = "[21.0.0,)"
+versionRange = "[26.1,)"
 ordering = "NONE"
 side = "BOTH"
 
 [[dependencies.ruokmod]]
 modId = "minecraft"
 mandatory = true
-versionRange = "[1.21,)"
+versionRange = "[26.1,)"
 ordering = "NONE"
 side = "BOTH"
 
 [[dependencies.ruokmod]]
 modId = "cloth_config"
 mandatory = true
-versionRange = "[15.0.0,)"
+versionRange = "[26.1,)"
 ordering = "AFTER"
 side = "CLIENT"

@@ -94,7 +94,7 @@ public class Render {
         initializeArrays();
     }
 
-    public static void entityCull(Entity entity, CallbackInfo ci) {
+    public static void entityCull(Entity entity, CallbackInfoReturnable<Boolean> cir) {
         // 剔除功能,如果未开启就关闭
         if(!RuOK.get().onCull) return;
         Minecraft mc = Minecraft.getInstance();
@@ -114,7 +114,7 @@ public class Render {
 
             // 黑名单检查：如果实体在黑名单中，则取消渲染
             if (isBlacklisted(entity)) {
-                ci.cancel();
+                cir.setReturnValue(false);
                 return;
             }
 
@@ -123,7 +123,7 @@ public class Render {
 
             // 如果实体距离玩家超过指定的距离或不在最近的生物列表中，则取消渲染
             if (distanceToPlayer > RuOK.get().EntitiesDistance * RuOK.get().EntitiesDistance || !inClosestEntities) {
-                ci.cancel();
+                cir.setReturnValue(false);
             }
         }
     }

@@ -2,7 +2,7 @@ package team.teampotato.ruok.util.render;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.boss.enderdragon.EnderDragon;
@@ -53,7 +53,7 @@ public class EntityRender {
         }
     }
     public static Optional<EntityType<?>> entityTypeGet(String id) {
-        return BuiltInRegistries.ENTITY_TYPE.getOptional(ResourceLocation.tryParse(id));
+        return BuiltInRegistries.ENTITY_TYPE.getOptional(Identifier.tryParse(id));
     }
 
     // 重新加载生物列表

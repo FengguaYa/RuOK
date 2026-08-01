@@ -1,13 +1,12 @@
 package team.teampotato.ruok.gui.vanilla.mode;
 
 import net.minecraft.util.ByIdMap;
-import net.minecraft.util.OptionEnum;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.function.IntFunction;
 
-public enum BlockBreakParticleType implements OptionEnum {
+public enum BlockBreakParticleType {
     VERY_HIGH(5,5,5,0,"ruok.quality.ultra"),
     HIGH(4, 4, 4,1,"ruok.quality.high"),
     NORMAL(3, 3, 3,2,"ruok.quality.normal"),

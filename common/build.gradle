@@ -6,35 +6,12 @@ loom {
     accessWidenerPath = file("src/main/resources/RuOK.accesswidener")
 }
 repositories {
-    // Add repositories to publish to here.
-    maven {
-        name = "Modrinth"
-        url = "https://api.modrinth.com/maven"
-        content {
-            includeGroup "maven.modrinth"
-        }
-    }
-    maven {
-        url "https://cursemaven.com"
-        content {
-            includeGroup "curse.maven"
-        }
-    }
-
-
     maven { url "https://maven.shedaniel.me/" }
-
 }
 
 dependencies {
-    modImplementation "net.fabricmc:fabric-loader:${rootProject.fabric_loader_version}"
-    // Remove the next line if you don't want to depend on the API
-    //modApi "dev.architectury:architectury:${rootProject.architectury_version}"
-
-    mappings loom.officialMojangMappings()
-    modImplementation "me.shedaniel.cloth:cloth-config:${project.cloth_config_version}"
-    modImplementation "maven.modrinth:sodium:${project.sodium_version}"
-
+    implementation "net.fabricmc:fabric-loader:${rootProject.fabric_loader_version}"
+    compileOnly "maven.modrinth:cloth-config:${rootProject.cloth_config_version}+fabric"
 }
 
 publishing {

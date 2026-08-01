@@ -16,10 +16,8 @@
     "minecraft.ParticleManagerMixin",
     "minecraft.TntMinecartEntityRendererMixin",
     "minecraft.WorldRendererMixin",
-    "minecraft.accessor.MinecraftAccessor",
     "minecraft.gui.ChatHudMixin",
-    "minecraft.gui.OptionsScreenMixin",
-    "sodium.SodiumGUIMixin"
+    "minecraft.gui.OptionsScreenMixin"
   ],
   "mixins": [
     "minecraft.ExplosionS2CPacketMixin"

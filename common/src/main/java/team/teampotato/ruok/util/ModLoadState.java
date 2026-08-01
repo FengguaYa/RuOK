@@ -14,7 +14,7 @@ public class ModLoadState {
 
     }
     public static boolean isSodium() {//Sodium Load
-        return isLoad("me.jellysquid.mods.sodium.client.SodiumClientMod");
+        return isLoad("net.caffeinemc.mods.sodium.client.SodiumClientMod");
     }
     public static boolean isVulkanMod() {
         return isLoad("net.vulkanmod.vulkan.Vulkan");

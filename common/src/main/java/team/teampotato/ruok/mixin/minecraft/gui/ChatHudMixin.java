@@ -1,14 +1,15 @@
 package team.teampotato.ruok.mixin.minecraft.gui;
 
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.Font;
+import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.gui.components.ChatComponent;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.Constant;
-import org.spongepowered.asm.mixin.injection.ModifyArg;
-import org.spongepowered.asm.mixin.injection.ModifyConstant;
+import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import team.teampotato.ruok.config.RuOK;
 import team.teampotato.ruok.util.ChatFix;
 
@@ -16,14 +17,19 @@ import team.teampotato.ruok.util.ChatFix;
 public class ChatHudMixin {
     @Shadow @Final private Minecraft minecraft;
 
-    @ModifyArg(method = "render", index = 1, at = @At(value = "INVOKE", target = "Lcom/mojang/blaze3d/vertex/PoseStack;translate(FFF)V" , ordinal = 0))
-    private float offsetY(float y) {
-        if (RuOK.get().chatFix) return y - ChatFix.getOffset(this.minecraft);
-        else return y;
+    @Inject(method = "extractRenderState", at = @At("HEAD"))
+    private void offsetStart(GuiGraphicsExtractor context, Font font, int i, int j, int k, ChatComponent.DisplayMode displayMode, boolean bl, CallbackInfo ci) {
+        if (RuOK.get().chatFix && this.minecraft != null) {
+            int offset = ChatFix.getOffset(this.minecraft);
+            if (offset != 0) context.pose().translate(0.0F, -offset);
+        }
     }
-    @ModifyConstant(method = "screenToChatY", constant = @Constant(doubleValue = 40.0))
-    private double textBottomOffset(double original) {
-        if (RuOK.get().chatFix) return original + ChatFix.getOffset(this.minecraft);
-        else return original;
+
+    @Inject(method = "extractRenderState", at = @At("RETURN"))
+    private void offsetEnd(GuiGraphicsExtractor context, Font font, int i, int j, int k, ChatComponent.DisplayMode displayMode, boolean bl, CallbackInfo ci) {
+        if (RuOK.get().chatFix && this.minecraft != null) {
+            int offset = ChatFix.getOffset(this.minecraft);
+            if (offset != 0) context.pose().translate(0.0F, offset);
+        }
     }
 }

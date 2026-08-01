@@ -1,5 +1,5 @@
 plugins {
-    id "com.github.johnrengelman.shadow" version "8.1.1"
+    id "com.gradleup.shadow"
 }
 
 architectury {
@@ -30,27 +30,10 @@ configurations {
 
 dependencies {
     neoForge "net.neoforged:neoforge:$rootProject.neoforge_version"
-    modApi "me.shedaniel.cloth:cloth-config-neoforge:${project.cloth_config_version}"
-    modImplementation "maven.modrinth:embeddium:${project.embeddium_version}"
+    implementation "maven.modrinth:cloth-config:${rootProject.cloth_config_version}+neoforge"
 
     common(project(path: ":common", configuration: "namedElements")) { transitive false }
     shadowBundle project(path: ':common', configuration: 'transformProductionNeoForge')
-}
-repositories {
-    // Add repositories to publish to here.
-    maven {
-        name = "Modrinth"
-        url = "https://api.modrinth.com/maven"
-        content {
-            includeGroup "maven.modrinth"
-        }
-    }
-    maven { url "https://maven.shedaniel.me/" }
-
-    maven {
-        name = 'NeoForged'
-        url = 'https://maven.neoforged.net/releases'
-    }
 }
 
 
@@ -62,13 +45,14 @@ processResources {
     }
 }
 
-shadowJar {
-    exclude "fabric.mod.json"
-    exclude "RuOK.common.json"
-    configurations = [project.configurations.shadowBundle]
-    archiveClassifier = 'dev-shadow'
+tasks.jar {
+    archiveClassifier = "raw"
 }
 
-remapJar {
-    input.set shadowJar.archiveFile
+shadowJar {
+    exclude "fabric.mod.json"
+    configurations = [project.configurations.shadowBundle]
+    archiveClassifier = ""
+    dependsOn(tasks.jar)
+    from(tasks.jar.archiveFile.map { zipTree(it) })
 }

@@ -3,7 +3,7 @@ package team.teampotato.ruok.util.render;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
-import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.multiplayer.ClientPacketListener;
 import net.minecraft.client.multiplayer.PlayerInfo;
@@ -76,7 +76,7 @@ public class TextRender {
             return text.setStyle(text.getStyle().withColor(ChatFormatting.GREEN));
         }
     }
-    public static void draw(GuiGraphics context, Minecraft mc) {
+    public static void draw(GuiGraphicsExtractor context, Minecraft mc) {
         if (RuOK.get().onGui) {
             drawText(context, mc);
         }
@@ -84,7 +84,7 @@ public class TextRender {
 
 
 
-    private static void drawText(GuiGraphics context, @NotNull Minecraft mc) {
+    private static void drawText(GuiGraphicsExtractor context, @NotNull Minecraft mc) {
         if (mc.level != null) {
             Font tr = mc.font;
             int color = 0xFFFFFFFF;
@@ -112,7 +112,7 @@ public class TextRender {
                     addTextShadow(context, x, y, textWidth, textHeight);
 
                     // 绘制文本
-                    context.drawString(tr, fpsText, x, y, color, true);
+                    context.text(tr, fpsText, x, y, color, true);
                     y += fh;
                 }
 
@@ -155,7 +155,7 @@ public class TextRender {
                     addTextShadow(context, x, y, textWidth, textHeight);
 
                     // 绘制文本
-                    context.drawString(tr, info, x, y, color, true);
+                    context.text(tr, info, x, y, color, true);
                     y += fh;
                 }
 
@@ -177,7 +177,7 @@ public class TextRender {
                     addTextShadow(context, x, y, textWidth, textHeight);
 
                     // 绘制文本
-                    context.drawString(tr, posText, x, y, color, true);
+                    context.text(tr, posText, x, y, color, true);
                     y += fh;
                 }
 
@@ -195,7 +195,7 @@ public class TextRender {
                     addTextShadow(context, x, y, textWidth, textHeight);
 
                     // 绘制文本
-                    context.drawString(tr, serverText, x, y, color, true);
+                    context.text(tr, serverText, x, y, color, true);
                     y += fh;
                 }
 
@@ -209,7 +209,7 @@ public class TextRender {
                     addTextShadow(context, x, y, textWidth, textHeight);
 
                     // 绘制文本
-                    context.drawString(tr, CAMERA_TO_BLOCK, x, y, color, true);
+                    context.text(tr, CAMERA_TO_BLOCK, x, y, color, true);
                     y += fh;
                 }
 
@@ -224,14 +224,14 @@ public class TextRender {
                     addTextShadow(context, x, y, textWidth, textHeight);
 
                     // 绘制文本
-                    context.drawString(tr, serverIOText, x, y, color, true);
+                    context.text(tr, serverIOText, x, y, color, true);
                     // y += fh; // 不增加y以防止文本间隔过大
                 }
             }
         }
     }
 
-    private static void addTextShadow(GuiGraphics context, int x, int y, int textWidth, int textHeight) {
+    private static void addTextShadow(GuiGraphicsExtractor context, int x, int y, int textWidth, int textHeight) {
         if(RuOK.get().TextBackground) {
             int shadowOffset = 2; // 阴影偏移量
             context.fill(x - shadowOffset, y - shadowOffset, x + textWidth + shadowOffset, y + textHeight + shadowOffset, -1873784752);
