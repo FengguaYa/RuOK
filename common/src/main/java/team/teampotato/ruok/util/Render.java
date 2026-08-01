@@ -12,6 +12,7 @@ import net.minecraft.world.entity.monster.Ghast;
 import net.minecraft.world.item.ItemStack;
 import org.jetbrains.annotations.NotNull;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import team.teampotato.ruok.config.RuOK;
 
 import java.util.Arrays;

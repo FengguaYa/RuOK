@@ -1,6 +1,7 @@
 package team.teampotato.ruok.util;
 
 import net.minecraft.client.*;
+import net.minecraft.server.level.ParticleStatus;
 import net.minecraft.network.chat.Component;
 
 

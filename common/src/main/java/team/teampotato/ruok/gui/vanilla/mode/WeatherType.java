@@ -20,12 +20,10 @@ public enum WeatherType {
     }
 
 
-    @Override
     public int getId() {
         return this.id;
     }
 
-    @Override
     public String getKey() {
         return this.translationKey;
     }

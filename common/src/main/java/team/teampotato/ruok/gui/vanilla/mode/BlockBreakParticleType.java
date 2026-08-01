@@ -43,7 +43,6 @@ public enum BlockBreakParticleType {
         return z;
     }
 
-    @Override
     public int getId() {
         return this.id;
     }
@@ -69,7 +68,6 @@ public enum BlockBreakParticleType {
         }
         return "close";
     }
-    @Override
     public String getKey() {
         return this.translationKey;
     }
