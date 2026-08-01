@@ -23,6 +23,7 @@ dependencies {
     api "net.fabricmc:fabric-loader:${rootProject.fabric_loader_version}"
     api "net.fabricmc.fabric-api:fabric-api:${rootProject.fabric_api_version}"
     implementation "maven.modrinth:cloth-config:${rootProject.cloth_config_version}+fabric"
+    implementation "maven.modrinth:sodium:${rootProject.sodium_fabric_version}"
 
     common(project(path: ":common")) { transitive false }
     shadowCommon(project(path: ":common", configuration: "transformProductionFabric")) { transitive false }

@@ -12,6 +12,7 @@ repositories {
 dependencies {
     implementation "net.fabricmc:fabric-loader:${rootProject.fabric_loader_version}"
     compileOnly "maven.modrinth:cloth-config:${rootProject.cloth_config_version}+fabric"
+    compileOnly "maven.modrinth:sodium:${rootProject.sodium_fabric_version}"
 }
 
 publishing {
