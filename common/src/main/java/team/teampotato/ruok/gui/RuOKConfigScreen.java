@@ -54,7 +54,7 @@ public class RuOKConfigScreen {
                 .build());
         main.addEntry(e.startEnumSelector(Component.translatable("ruok.quality.global.info"), QualityType.class, RuOK.get().qualityModes)
                 .setDefaultValue(QualityType.NORMAL)
-                .setEnumNameProvider(v -> Component.translatable(v.getKey()))
+                .setEnumNameProvider(v -> Component.translatable(((QualityType) v).getKey()))
                 .setTooltip(Component.translatable("ruok.quality.global.tooltip"))
                 .setSaveConsumer(v -> Quality.set(v))
                 .build());
@@ -73,7 +73,7 @@ public class RuOKConfigScreen {
                 .build());
         other.addEntry(e.startEnumSelector(Component.translatable("ruok.quality.weather.info"), WeatherType.class, RuOK.get().RenderWeather)
                 .setDefaultValue(WeatherType.NORMAL)
-                .setEnumNameProvider(v -> Component.translatable(v.getKey()))
+                .setEnumNameProvider(v -> Component.translatable(((WeatherType) v).getKey()))
                 .setTooltip(Component.translatable("ruok.quality.weather.tooltip"))
                 .setSaveConsumer(v -> RuOK.get().RenderWeather = v)
                 .build());
@@ -104,7 +104,7 @@ public class RuOKConfigScreen {
                 .build());
         other.addEntry(e.startEnumSelector(Component.translatable("ruok.quality.particle.info"), BlockBreakParticleType.class, RuOK.get().BlockBreakParticleMode)
                 .setDefaultValue(BlockBreakParticleType.HIGH)
-                .setEnumNameProvider(v -> Component.translatable(v.getKey()))
+                .setEnumNameProvider(v -> Component.translatable(((BlockBreakParticleType) v).getKey()))
                 .setTooltip(Component.translatable("ruok.quality.particle.tooltip"))
                 .setSaveConsumer(v -> RuOK.get().BlockBreakParticleMode = v)
                 .build());
